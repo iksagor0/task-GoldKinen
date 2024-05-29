@@ -15,11 +15,15 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
+import { IPost } from "../types/types";
 import { getRandomDateAndTime } from "../utils/getRandomDateAndTime";
 import { getRandomImage } from "../utils/getRandomImage";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
+}
+interface PostCardProps {
+  post: IPost;
 }
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
@@ -33,7 +37,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function PostCard() {
+export default function PostCard({ post }: PostCardProps) {
   const [expanded, setExpanded] = React.useState(false);
   const [favorite, setFavorite] = React.useState(false);
 
@@ -66,9 +70,12 @@ export default function PostCard() {
       <CardMedia component="img" height="100" image={randomImage} alt="Paella dish" className="max-h-[300px]" />
 
       <CardContent>
+        <Typography variant="h3" fontSize={18} color="text.secondary" style={{ marginBottom: 4 }}>
+          {post?.title}
+        </Typography>
+
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen
-          peas along with the mussels, if you like.
+          {post?.body}
         </Typography>
       </CardContent>
 
