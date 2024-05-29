@@ -1,8 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IInitialPosTState, IPost } from "../../types/types";
+import { IPost } from "../../types/types";
 import { getData } from "../getData";
 
-const initialState: IInitialPosTState = {
+interface IInitialPostState {
+  posts: IPost[];
+  isLoading: boolean;
+  errorMessage: string;
+}
+
+const initialState: IInitialPostState = {
   posts: [],
   isLoading: false,
   errorMessage: "",
@@ -34,7 +40,7 @@ const postSlice = createSlice({
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.errorMessage = "";
-        state.posts = action.payload || [];
+        state.posts = action.payload?.sort((a, b) => b.id - a.id) || [];
       });
   },
 });

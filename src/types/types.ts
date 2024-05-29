@@ -18,8 +18,3 @@ export interface IComments {
   body: string;
 }
 
-export interface IInitialPosTState {
-  posts: IPost[];
-  isLoading: boolean;
-  errorMessage: string;
-}

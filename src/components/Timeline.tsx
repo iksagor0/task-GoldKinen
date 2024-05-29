@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../app/store";
+import { RootStateType } from "../app/store";
+import { fetchComments } from "../features/comments/commentSlice";
 import { fetchPosts } from "../features/posts/postSlice";
+import { fetchUsers } from "../features/users/userSlice";
 import PostCard from "./PostCard";
 
 export default function Timeline() {
-  const posts = useSelector((state: RootState) => state.posts);
+  const posts = useSelector((state: RootStateType) => state.posts);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchPosts() as any);
+    dispatch(fetchUsers() as any);
+    dispatch(fetchComments() as any);
   }, [dispatch]);
 
   if (posts.isLoading) return <div>Loading...</div>;
