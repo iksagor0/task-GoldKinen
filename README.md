@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# Post Timeline Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project showcases a simple and clean way to build a timeline of posts using React, Redux, Typescript and integrating data from multiple APIs. The application provides a user-friendly interface with expandable posts to view comments, and the posts are sorted in descending order of post ID.
 
-Currently, two official plugins are available:
+#### Live URL: [ https://task-gold-kinen.vercel.app](https://task-gold-kinen.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+1. Clone or download this repository.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Navigate to the project folder and open a terminal.
 
-- Configure the top-level `parserOptions` property like this:
+3. Run npm install to install the dependencies.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+4. After installing all dependencies, run `npm run dev` to start the development server.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+5. The project will be running on http://localhost:5173/.
+
+## Technologies Used
+
+- TypeScript
+- React
+- Redux
+- Material UI
+- Tailwind CSS
+
+## Features
+
+- Display Posts: Fetch and display posts with post title, and post body.
+- View Comments: Expand each post to view relevant comments.
+- Show Users Info: Display users name based on post's User ID.
+
+## API Endpoints
+
+- Fetch Posts: `https://jsonplaceholder.typicode.com/posts`
+- Fetch Users: `https://jsonplaceholder.typicode.com/users`
+- Fetch Comments: `https://jsonplaceholder.typicode.com/comments`
