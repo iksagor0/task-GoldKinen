@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -44,6 +43,9 @@ export default function PostCard({ post }: PostCardProps) {
   const [expanded, setExpanded] = React.useState(false);
   const [favorite, setFavorite] = React.useState(false);
 
+  /*
+   * This is not the best practice to get user and comment's data. We don't use this technique in real life project.
+   */
   const usersAndComments = useSelector((state: RootStateType) => ({
     user: state.users?.users?.find((user) => user.id === post?.userId),
     comments: state.comments?.comments?.filter((comment) => comment.postId === post?.id),
@@ -79,7 +81,7 @@ export default function PostCard({ post }: PostCardProps) {
 
       <CardContent>
         <Typography variant="h3" fontSize={18} color="text.secondary" style={{ marginBottom: 4 }}>
-          {post?.title}
+          {post?.id} - {post?.title}
         </Typography>
 
         <Typography variant="body2" color="text.secondary">

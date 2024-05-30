@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStateType } from "../app/store";
@@ -17,13 +16,14 @@ export default function Timeline() {
     dispatch(fetchComments() as any);
   }, [dispatch]);
 
+  // handle loading state
   if (posts.isLoading) return <div>Loading...</div>;
 
+  // handle error
   if (posts.errorMessage) return <div>An error is occurred! {posts.errorMessage}</div>;
 
-  console.log("🚀 ~ Timeline ~ posts:", posts);
   return (
-    <section className="w-[90vw] max-w-[600px] h-[95vh] mx-auto min-h-[80vh] rounded-2xl bg-[#f1f1f1] shadow-2xl overflow-auto flex flex-wrap justify-between gap-5 ">
+    <section className="w-[90vw] max-w-[600px] h-[95vh] mx-auto min-h-[80vh] rounded-lg bg-[#f1f1f1] shadow-2xl overflow-auto flex flex-wrap justify-between gap-5 ">
       {posts?.posts?.map((post) => (
         <PostCard key={post?.id} post={post} />
       ))}
